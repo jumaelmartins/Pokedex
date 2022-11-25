@@ -34,3 +34,4 @@ pokeApi.getPokemons = (offset = 0 , limit = 5) => {
         .then((pokemonsDetails) => pokemonsDetails)
         .catch((error) => console.log(error))
 }
+

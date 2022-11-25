@@ -1,3 +1,5 @@
+const searchInput = document.querySelector('.containerSearch input')
+
 
 function convertPokemonToLi(pokemon){
     return ` 
@@ -35,4 +37,8 @@ loadPokemonItens(offset, limit)
 nextButton.addEventListener('click', () => {
     offset += limit
     loadPokemonItens(offset, limit)
+})
+
+searchInput.addEventListener('input', event => {
+    console.log(event.target.value.trim())
 })
