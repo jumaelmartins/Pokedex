@@ -36,4 +36,16 @@ pokeApi.getPokemons = (offset, limit) => {
 }
 
 
-
+searchInput.addEventListener('input', event => {
+    const searchValue = (event.target.value.trim().toLowerCase())
+        limit = 1154
+        const url = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${limit}`;
+    
+        fetch(url)
+            .then((response) => response.json())
+            .then((jsonBody) => jsonBody.results)
+            .then((results) => {
+                const pokeList = Array.from(results).filter((search) => (search.name.includes(searchValue)))
+            })
+    }
+)

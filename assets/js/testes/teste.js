@@ -50,3 +50,10 @@ if (valor2 != valor) {
 
 // offset padrão 0 limit 10.
 // criar botão filtro geração
+
+//let limit = 1154
+//const offset = 0
+
+//const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
+
+
