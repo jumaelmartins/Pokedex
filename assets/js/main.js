@@ -19,6 +19,7 @@ function convertPokemonToLi(pokemon) {
     `;
 }
 
+const inputBtn = document.querySelector("#input");
 const pokemonList = document.getElementById("pokemonList");
 const nextButton = document.getElementById("nextPage");
 
@@ -100,22 +101,20 @@ const buttons = {
     const button = document.createElement("button");
     button.innerHTML = number;
 
-    const buttons = hmtl.get('#numbers')
-    buttons.appendChild(button)
+    const buttons = hmtl.get("#numbers");
+    buttons.appendChild(button);
 
     if (state.page === number) {
-        button.classList.add('active')
+      button.classList.add("active");
     }
 
-    button.classList.add('button')
+    button.classList.add("button");
 
-
-    button.addEventListener('click', (e) => {
-        const page = Number(e.target.innerText)
-        controls.goTo(page)
-        update()
-    })
-
+    button.addEventListener("click", (e) => {
+      const page = Number(e.target.innerText);
+      controls.goTo(page);
+      update();
+    });
   },
   update() {
     hmtl.get("#numbers").innerHTML = "";
@@ -152,14 +151,9 @@ function update() {
 }
 
 const list = {
-  /*create(item) {
-    const div = document.createElement("div");
-    div.classList.add("item");
-    div.innerHTML = item;
-
-    pokemonList.appendChild(div);
-  },*/
   update() {
+    showLoading();
+
     hmtl.get("#pokemonList").innerHTML = "";
 
     let page = state.page - 1;
@@ -172,6 +166,7 @@ const list = {
         .map(convertPokemonToLi)
         .join("");
       pokemonList.innerHTML = paginatedItems;
+      hideLoading();
     });
     /*function loadPokemonItens(offset, limit) {
   pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
@@ -187,6 +182,57 @@ const list = {
 function init() {
   update();
   controls.createListeners();
+  filter();
 }
 
 init();
+
+function hideLoading() {
+  const load = document.querySelector(".boxLoad");
+  load.classList.add("hidden");
+  pokemonList.classList.remove("hidden");
+}
+
+function showLoading() {
+  const load = document.querySelector(".boxLoad");
+  load.classList.remove("hidden");
+  pokemonList.classList.add("hidden");
+}
+
+function filter() {
+    
+  let page = state.page - 1;
+  let start = page * state.perPage;
+  let end = start + state.perPage;
+
+  inputBtn.addEventListener("input", (e) => {
+    showLoading();
+    let searchValue = e.target.value.trim().toLowerCase();
+
+    pokeApi.getPokemons(offset, limit).then((pokemons) => {
+      const filterPokemons = Array.from(pokemons)
+        .filter((pokemon) => pokemon.name.toLowerCase().includes(searchValue))
+        .slice(start, end)
+        .map(convertPokemonToLi)
+        .join("");
+      pokemonList.innerHTML = filterPokemons;
+      hideLoading();
+    });
+  });
+
+  list.update();
+}
+
+//.then((pokemons = [] ) => {
+//const filterPokemons = pokemons.map(convertPokemonToLi).join("")
+//pokemonList.innerHTML = filterPokemons;
+//hideLoading()})})}
+
+/*pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
+        const filterPokemons = pokemons
+          .includes()
+           .map(convertPokemonToLi)
+          .join("");
+        pokemonList.innerHTML = paginatedItems;
+        hideLoading()
+      }**/

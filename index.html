@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedex</title>
+    <link rel="shortcut icon" href="./assets/img/favicon-32x32.png" type="image/x-icon" />
     <!-- normalize-->
     <link
       rel="stylesheet"
@@ -26,11 +27,11 @@
   </head>
 
   <body>
-    <section class="content">
-      <div class="header">
+    <main class="content">
+      <header class="header">
         <h1>Pokedex</h1>
         <div class="containerSearch">
-          <input type="search" placeholder="Search By PokeName" autofocus />
+          <input id="input" type="search" placeholder="Search By PokeName" autofocus />
           <a href="#" class="searchBtn">
             <img
               src="./assets/img/search-svgrepo-com.svg"
@@ -39,7 +40,8 @@
               height="20"
             />
           </a>
-        </div>
+        </header>
+        <br/>
         <h3>Filtros</h3>
         <ol class="hidden">
           <li class="grass">Grass</li>
@@ -62,10 +64,10 @@
           <li class="steel">Steel</li>
         </ol>
       </div>
-      <ol id="pokemonList" class="pokemons">
-        <div>
-          <li>teste</li>
-        </div>
+      <div class="boxLoad">
+        <div class="pre"></div>
+      </div>
+      <ol  id="pokemonList" class="pokemons hidden">
       </ol>
       <section class="pagination">
             <button id="firstPage" class="button">First</button>
@@ -76,7 +78,7 @@
             <button id="nextPage" class="button">Next</button>
             <button id="lastPage" class="button">Last</button>
       </section>
-    </section>
+    </main>
 
     <!--javaScript main-->
     <script src="./assets/js/pokemon-models.js"></script>
