@@ -204,14 +204,18 @@ function filter() {
   let start = page * state.perPage;
   let end = start + state.perPage;
 
-  inputBtn.addEventListener("change", (e) => {
-    let searchValue = e.target.value.trim().toLowerCase();
+  inputBtn.addEventListener("keyup", (e) => {
+    let searchValue = ''
+
+    setInterval(() => {
+      return searchValue = e.target.value.trim().toLowerCase();
+    }, 500);
     
     showLoading();
 
     inputBtn.focus();
-    console.log(searchValue);
 
+    console.log(searchValue);
     pokeApi.getPokemons(offset, limit).then((pokemons) => {
       const filterPokemons = Array.from(pokemons)
         .filter((pokemon) => pokemon.name.toLowerCase().includes(searchValue))
