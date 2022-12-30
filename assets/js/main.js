@@ -200,14 +200,17 @@ function showLoading() {
 }
 
 function filter() {
-    
   let page = state.page - 1;
   let start = page * state.perPage;
   let end = start + state.perPage;
 
-  inputBtn.addEventListener("input", (e) => {
-    showLoading();
+  inputBtn.addEventListener("change", (e) => {
     let searchValue = e.target.value.trim().toLowerCase();
+    
+    showLoading();
+
+    inputBtn.focus();
+    console.log(searchValue);
 
     pokeApi.getPokemons(offset, limit).then((pokemons) => {
       const filterPokemons = Array.from(pokemons)
@@ -219,7 +222,6 @@ function filter() {
       hideLoading();
     });
   });
-
   list.update();
 }
 

@@ -24,6 +24,7 @@
     <!-- CSS GLOBAL-->
     <link rel="stylesheet" href="./assets/css/global.css" />
     <link rel="stylesheet" href="./assets/css/pokdedex.css" />
+    <link rel="stylesheet" href="./assets/css/pokemonInfo.css" />
   </head>
 
   <body>
@@ -79,6 +80,41 @@
             <button id="lastPage" class="button">Last</button>
       </section>
     </main>
+    <section class="hidden">
+      <header class="header grass">
+        <span><img width="16px" height="16px" src="./assets/img/arrow-left-svgrepo-com.svg" alt="backArrow"></span>
+        <div>
+          <h2>Bulbasaur</h2>
+
+          <ol class="types">
+            <li class="type grass">Grass</li>
+            <li class="type poison">Poison</li>
+            
+          <div class="numberContainer">
+            <p class="number">#001</p>
+          </div>
+          </ol>
+        
+        <div class="detail">
+          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg" alt="pokeImage">
+        </div>
+      </header >
+      
+      <article class="infoContainer">
+        <div class="baseStats">
+          <p>base stats</p>
+        </div>
+        <ul>
+          <li class="statList"><p class="c-1" >HP: <p>100</p></p><div class="statBar"></div></li>
+          <li class="statList"><p class="c-1">Attack: <p>300</p></p><div class="statBar"></div></li>
+          <li class="statList"><p class="c-1">Defense: <p>300</p></p><div class="statBar"></div></li>
+          <li class="statList"><p class="c-1">Sp. Atack: <p>300</p></p><div class="statBar"></div></li>
+          <li class="statList"><p class="c-1">Sp. Def: <p>300</p></p><div class="statBar"></div></li>
+          <li class="statList"><p class="c-1">Speed: <p>300</p></p><div class="statBar"></div></li>
+          <li class="statList"><p class="c-1">Total: <p>300</p></p><div class="statBar"></div></li>
+        </ul>
+      </article>
+    </section>
 
     <!--javaScript main-->
     <script src="./assets/js/pokemon-models.js"></script>
