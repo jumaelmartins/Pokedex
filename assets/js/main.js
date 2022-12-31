@@ -28,7 +28,7 @@ const nextButton = document.getElementById("nextPage");
 //loadPokemonItens(offset, limit);
 
 let offset = 0;
-let perPage = 10;
+let perPage = 12;
 let limit = 251;
 
 /*nextButton.addEventListener("click", () => {
@@ -183,6 +183,7 @@ function init() {
   update();
   controls.createListeners();
   filter();
+  showDetails();
 }
 
 init();
@@ -205,12 +206,12 @@ function filter() {
   let end = start + state.perPage;
 
   inputBtn.addEventListener("keyup", (e) => {
-    let searchValue = ''
+    let searchValue = "";
 
     setInterval(() => {
-      return searchValue = e.target.value.trim().toLowerCase();
+      return (searchValue = e.target.value.trim().toLowerCase());
     }, 500);
-    
+
     showLoading();
 
     inputBtn.focus();
@@ -227,6 +228,14 @@ function filter() {
     });
   });
   list.update();
+}
+
+function showDetails() {
+  pokemonList.addEventListener("click", (e) => {
+ 
+
+    console.log(e.target.innerText);
+  });
 }
 
 //.then((pokemons = [] ) => {
